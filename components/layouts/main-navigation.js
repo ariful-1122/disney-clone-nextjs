@@ -5,7 +5,11 @@ import Link from "next/link";
 function MainNavigation() {
   return (
     <Nav>
-      <Logo src="/images/logo.svg" />
+      <Link href="/">
+        <a>
+          <Logo src="/images/logo.svg" />
+        </a>
+      </Link>
       <NavMenu>
         <Link href="/">
           <a>
