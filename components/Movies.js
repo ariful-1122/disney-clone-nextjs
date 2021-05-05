@@ -2,90 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 
-function Movies() {
+function Movies(props) {
+  const {movies} = props;
+
   return (
     <Container>
       <h4>Recomended For You</h4>
       <Content>
-        <Link href="/detail/abc">
-          <a>
+        {movies &&
+          movies.map(movie => (
             <Wrap>
-              <img
-                width="400"
-                src="https://wallpapercave.com/wp/wp6674867.jpg"
-                alt=""
-              />
+              <Link href={`/detail/${movie._id}`}>
+                <a>
+                  <img src={movie.cardImg} alt={movie.subTitle} />
+                </a>
+              </Link>
             </Wrap>
-          </a>
-        </Link>
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://www.wallpapertip.com/wmimgs/32-320322_cloudy-with-a-chance-of-meatballs-tree.jpg"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://all4desktop.com/data_images/1920%20x%201200/4147719-2014-rio-2.jpg"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://i.pinimg.com/originals/fb/be/5d/fbbe5d447190fe5b45501e6088da6200.jpg"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://lh5.googleusercontent.com/proxy/mDF95n7R2ZOTrtCKNn1vPo2pLE64wLWGQFHJAGLp4kYIVHTprs6kCtjl1xw1ZbXK_8HXSlX9DKG0cZoOMDU1YCJhDZsdYDMNy0F7KRBGNsKb0HLrVNAluO0RFffoXRUsP1rbaA=s0-d"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
-
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://wallpapercave.com/wp/wp6674867.jpg"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
-
-        <Link href="/detail/abc">
-          <a>
-            <Wrap>
-              <img
-                width="400"
-                src="https://www.wallpaperbetter.com/wallpaper/575/996/976/rio-2-hi-res-images-720P-wallpaper.jpg"
-                alt=""
-              />
-            </Wrap>
-          </a>
-        </Link>
+          ))}
       </Content>
     </Container>
   );
@@ -111,7 +44,7 @@ const Wrap = styled.div`
   border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 1px 12px 11px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 1px 12px 11px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 1px 12px 11px -2px rgba(0, 0, 0, 0.75);
@@ -119,6 +52,7 @@ const Wrap = styled.div`
   img {
     width: 100%;
     height: 100%;
+    overflow: hidden;
     object-fit: cover;
   }
 

@@ -4,12 +4,14 @@ import ImgSlider from "./ImgSlider";
 import Movies from "./Movies";
 import Viewers from "./Viewers";
 
-function Home() {
+function Home(props) {
+  const {movies} = props;
+
   return (
     <Container>
       <ImgSlider />
       <Viewers />
-      <Movies />
+      <Movies movies={movies} />
     </Container>
   );
 }

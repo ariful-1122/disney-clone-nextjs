@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-function Detail() {
+function Detail(props) {
+  const {movie} = props;
+
   return (
     <Container>
       <Background>
-        <img src="https://www.wallpaperbetter.com/wallpaper/575/996/976/rio-2-hi-res-images-720P-wallpaper.jpg" />
+        <img src={movie.bgImg} />
       </Background>
       <ImageTitle>
-        <img src="https://images-platform.99static.com//9g9pg2hX6uMBKUoRFG2jNuq4Fog=/0x0:1000x1000/fit-in/500x500/projects-files/38/3878/387800/f603361c-1b55-4ffc-b63d-3f67e3eef275.png" />
+        <img src={movie.logoImg} />
       </ImageTitle>
       <Controls>
         <PlayButton>
@@ -27,14 +29,9 @@ function Detail() {
         </GroupWatchButton>
       </Controls>
 
-      <SubTitle>2020.20m.Family,Kids,Fantasy,Animation</SubTitle>
+      <SubTitle>{movie.subTitle}</SubTitle>
 
-      <Description>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus,
-        doloribus? Maiores deserunt sed delectus nesciunt rerum accusantium
-        recusandae quod quam reiciendis alias laborum blanditiis fugit,
-        voluptate quaerat molestiae, nemo et!
-      </Description>
+      <Description>{movie.desc}</Description>
     </Container>
   );
 }
