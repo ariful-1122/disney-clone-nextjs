@@ -48,6 +48,10 @@ const Container = styled.div`
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 `;
 
 const Wrap = styled.div`
@@ -73,11 +77,16 @@ const Wrap = styled.div`
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: -1;
+    opacity: 0;
+    z-index: 0;
   }
 
   &:hover {
     border-color: #ddd;
     transform: scale(1.06);
+
+    video {
+      opacity: 1;
+    }
   }
 `;
