@@ -7,9 +7,9 @@ import {useRouter} from "next/router";
 function MainNavigation() {
   const [session, loading] = useSession();
 
-  const loginHandler = async () => {
-    await signIn("google", {callbackUrl: "/"});
-  };
+  // const loginHandler = async () => {
+  //   await signIn("google", {callbackUrl: "/"});
+  // };
 
   return (
     <Nav>
@@ -20,7 +20,9 @@ function MainNavigation() {
       </Link>
       {!session ? (
         <LoginContainer>
-          <Login onClick={loginHandler}>Login</Login>
+          <Login onClick={() => signIn("google", {callbackUrl: "/"})}>
+            Login
+          </Login>
         </LoginContainer>
       ) : (
         <>
