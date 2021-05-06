@@ -7,8 +7,8 @@ import {useRouter} from "next/router";
 function MainNavigation() {
   const [session, loading] = useSession();
 
-  const loginHandler = () => {
-    signIn("google", {callbackUrl: "/"});
+  const loginHandler = async () => {
+    await signIn("google", {callbackUrl: "/"});
   };
 
   return (
