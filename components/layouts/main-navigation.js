@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import {useSession, signIn, signOut} from "next-auth/client";
+import {useRouter} from "next/router";
 
 function MainNavigation() {
+  const [session, loading] = useSession();
+
+  const loginHandler = () => {
+    signIn("google", {callbackUrl: "/"});
+  };
+
   return (
     <Nav>
       <Link href="/">
@@ -10,45 +18,56 @@ function MainNavigation() {
           <Logo src="/images/logo.svg" />
         </a>
       </Link>
-      <NavMenu>
-        <Link href="/">
-          <a>
-            <img src="/images/home-icon.svg" />
-            <span>Home</span>
-          </a>
-        </Link>
-        <Link href="/">
-          <a>
-            <img src="/images/search-icon.svg" />
-            <span>Search</span>
-          </a>
-        </Link>
-        <Link href="/">
-          <a>
-            <img src="/images/watchlist-icon.svg" />
-            <span>Watchlist</span>
-          </a>
-        </Link>
-        <Link href="/">
-          <a>
-            <img src="/images/original-icon.svg" />
-            <span>Original</span>
-          </a>
-        </Link>
-        <Link href="/">
-          <a>
-            <img src="/images/movie-icon.svg" />
-            <span>Movies</span>
-          </a>
-        </Link>
-        <Link href="/">
-          <a>
-            <img src="/images/series-icon.svg" />
-            <span>Series</span>
-          </a>
-        </Link>
-      </NavMenu>
-      <UserImg src="https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png" />
+      {!session ? (
+        <LoginContainer>
+          <Login onClick={loginHandler}>Login</Login>
+        </LoginContainer>
+      ) : (
+        <>
+          <NavMenu>
+            <Link href="/">
+              <a>
+                <img src="/images/home-icon.svg" />
+                <span>Home</span>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <img src="/images/search-icon.svg" />
+                <span>Search</span>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <img src="/images/watchlist-icon.svg" />
+                <span>Watchlist</span>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <img src="/images/original-icon.svg" />
+                <span>Original</span>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <img src="/images/movie-icon.svg" />
+                <span>Movies</span>
+              </a>
+            </Link>
+            <Link href="/">
+              <a>
+                <img src="/images/series-icon.svg" />
+                <span>Series</span>
+              </a>
+            </Link>
+          </NavMenu>
+          <UserImg
+            onClick={() => signOut("google")}
+            src="https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png"
+          />
+        </>
+      )}
     </Nav>
   );
 }
@@ -67,6 +86,29 @@ const Nav = styled.nav`
 
 const Logo = styled.img`
   width: 8rem;
+`;
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+`;
+
+const Login = styled.button`
+  border: 1px solid #ddd;
+  background: transparent;
+  color: #fff;
+  padding: 1rem 3rem;
+  border-radius: 4px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+
+  &:hover {
+    background: #ddd;
+    cursor: pointer;
+    color: #000;
+  }
 `;
 
 const NavMenu = styled.div`

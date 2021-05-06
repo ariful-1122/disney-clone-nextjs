@@ -11,7 +11,7 @@ function Movies(props) {
       <Content>
         {movies &&
           movies.map(movie => (
-            <Wrap>
+            <Wrap key={movie._id}>
               <Link href={`/detail/${movie._id}`}>
                 <a>
                   <img src={movie.cardImg} alt={movie.subTitle} />

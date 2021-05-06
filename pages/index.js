@@ -1,11 +1,32 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Home from "../components/Home";
 import Movie from "../model/MovieModel";
 import connectDB from "../config/db";
+import {getSession} from "next-auth/client";
+import {useRouter} from "next/router";
+import Loader from "../components/loader/Loader";
 
 function HomePage(props) {
+  const router = useRouter();
+
+  const [loading, setLoading] = useState(true);
+
   if (props.hasError) {
-    return <h2>NO Movie Found!</h2>;
+    return <h2>No Movie Found!</h2>;
+  }
+
+  useEffect(() => {
+    getSession().then(session => {
+      if (!session) {
+        router.push("/login");
+      } else {
+        setLoading(false);
+      }
+    });
+  }, []);
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (

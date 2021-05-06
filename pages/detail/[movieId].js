@@ -1,3 +1,4 @@
+import {getSession} from "next-auth/client";
 import React from "react";
 import Detail from "../../components/detail-page/Detail";
 import connectDB from "../../config/db";
@@ -18,6 +19,16 @@ function DetailPage(props) {
 }
 
 export async function getServerSideProps(context) {
+  const session = await getSession({req: context.req});
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: `${process.env.BASE_URL}/login`,
+      },
+    };
+  }
+
   const {params} = context;
 
   const movieId = params.movieId;
