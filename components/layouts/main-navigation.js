@@ -20,7 +20,13 @@ function MainNavigation() {
       </Link>
       {!session ? (
         <LoginContainer>
-          <Login onClick={() => signIn("google", {callbackUrl: "/"})}>
+          <Login
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "https://disney-nextjs.herokuapp.com",
+              })
+            }
+          >
             Login
           </Login>
         </LoginContainer>
