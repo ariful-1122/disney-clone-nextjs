@@ -8,17 +8,4 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
-  // callbacks: {
-  //   async signIn(user, account, profile) {
-  //     if (
-  //       account.provider === "google" &&
-  //       profile.verified_email === true &&
-  //       profile.email.endsWith("@gmail.com")
-  //     ) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   },
-  // },
 });
