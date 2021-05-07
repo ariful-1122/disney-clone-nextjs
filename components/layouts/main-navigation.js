@@ -20,11 +20,7 @@ function MainNavigation() {
       </Link>
       {!session ? (
         <LoginContainer>
-          <Login
-            onClick={() =>
-              signIn("google", {callbackUrl: `/${process.env.BASE_URL}`})
-            }
-          >
+          <Login onClick={() => signIn("google", {callbackUrl: "/"})}>
             Login
           </Login>
         </LoginContainer>
