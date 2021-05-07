@@ -71,7 +71,7 @@ function MainNavigation() {
             </Link>
           </NavMenu>
           <UserImg
-            onClick={() => signOut("google")}
+            onClick={() => signOut()}
             src="https://www.kindpng.com/picc/m/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png"
           />
         </>
