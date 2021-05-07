@@ -23,7 +23,7 @@ function MainNavigation() {
           <Login
             onClick={() =>
               signIn("google", {
-                callbackUrl: "https://disney-nextjs.herokuapp.com",
+                callbackUrl: "http://localhost:3000/",
               })
             }
           >
