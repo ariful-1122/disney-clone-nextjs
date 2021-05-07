@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -H 0.0.0.0 -p $PORT",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build",
     "import:data": "node seeder/seeder",
     "destroy:data": "node seeder/seeder -d"
   },
